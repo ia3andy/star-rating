@@ -17,8 +17,8 @@ class StartRating extends LitElement {
     ref: string;
 
     @state()
-    private total: Rating = {rating: 0, count: 0};
-    
+    private total: Rating = {rating: undefined, count: 0};
+
     @state()
     private rating: number;
 
