@@ -29,7 +29,7 @@ public class RatingResource {
     @Transactional
     public Rating.TotalRating rating(NewRating rating) {
         final String userId = HashUtil.sha256(context.request().authority().host());
-        if (rating.rating < 0) {
+        if (rating.rating > 5 || rating.rating < 0) {
             throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST).entity("Invalid rating!").build());
         }
         if (Rating.hasRated(rating.ref, userId)) {
