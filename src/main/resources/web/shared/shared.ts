@@ -1,0 +1,1 @@
+import '@qomponent/qui-icons';

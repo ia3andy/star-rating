@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-stars
+spec:
+  serviceName: postgres-stars
+  selector:
+    matchLabels:
+      app: postgres-stars
+  template:
+    metadata:
+      labels:
+        app: postgres-stars
+    spec:
+      containers:
+        - name: postgres-stars
+          image: registry.redhat.io/rhel9/postgresql-16:latest
+          resources:
+            limits:
+              memory: 150Mi
+          volumeMounts:
+            - mountPath: /var/lib/pgsql/data
+              name: postgresql-stars-data
+          env:
+            - name: POSTGRESQL_DATABASE
+              value: stars
+            - name: POSTGRESQL_USER
+              value: stars
+            - name: POSTGRESQL_PASSWORD
+              value: stars
+            - name: POSTGRESQL_VOLUME_CAPACITY
+              value: 1Gi
+      volumes:
+        - name: postgresql-stars-data
+          persistentVolumeClaim:
+            claimName: postgresql-stars-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgresql-stars-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-stars
+spec:
+  selector:
+    app: postgres-stars
+  type: LoadBalancer
+  ports:
+    - port: 5432
+      targetPort: 5432

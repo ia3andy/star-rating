@@ -47,17 +47,23 @@
             <groupId>org.mvnpm</groupId>
             <artifactId>lit</artifactId>
             <version>3.1.4</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mvnpm.at.qomponent</groupId>
             <artifactId>qui-icons</artifactId>
             <version>1.0.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mvnpm</groupId>
             <artifactId>lodash.round</artifactId>
             <version>4.0.4</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-openshift</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -70,10 +76,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-hibernate-orm</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

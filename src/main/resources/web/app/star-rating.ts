@@ -1,7 +1,5 @@
 import {LitElement, html, css} from 'lit';
 import {customElement, state, property} from 'lit/decorators.js';
-import {unsafeHTML} from 'lit/directives/unsafe-html.js';
-import '@qomponent/qui-icons';
 import round from 'lodash.round';
 
 
@@ -20,8 +18,7 @@ class StartRating extends LitElement {
 
     @state()
     private total: Rating = {rating: 0, count: 0};
-
-
+    
     @state()
     private rating: number;
 
@@ -115,7 +112,7 @@ class StartRating extends LitElement {
         .total, .rating {
             font-size: 20px;
         }
-        
+
         .message {
             color: #666;
         }

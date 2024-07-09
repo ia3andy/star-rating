@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "ref", "userId" }) })
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"ref", "userId"})})
 public class Rating extends PanacheEntity {
     public String ref;
     public LocalDateTime time;
